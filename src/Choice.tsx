@@ -5,10 +5,10 @@ import {
     Show,
     createResource,
     createSignal,
-    onMount,
 } from "solid-js";
 import { GenerateData } from "./App";
 import { GameFetchData, fetchGames } from "../lib/fetch";
+import GameCard from "./GameCard";
 
 export interface ChoiceGenerate {
     games: GameFetchData[];
@@ -29,27 +29,11 @@ export default function Choice({
             <Show when={!gamesData.loading} fallback={<>Fetching Games...</>}>
                 <For each={gamesData()} fallback={<>Loading...</>}>
                     {(game) => (
-                        <div>
-                            <div>Name: {game.name}</div>
-                            <div>Size: {game.size}</div>
-                            <input
-                                type="checkbox"
-                                onchange={(e) => {
-                                    let checked = e.target.checked;
-
-                                    if (checked) {
-                                        let data = generateData() as ChoiceGenerate;
-                                        data.games = [...(data.games ? data.games : []), game];
-                                    } else {
-                                        let data = generateData() as ChoiceGenerate;
-                                        let newGames = (data.games ? data.games : []).filter(
-                                            (listGame) => listGame.downloadUrl == game.downloadUrl,
-                                        );
-                                        setGenerateData({ games: newGames });
-                                    }
-                                }}
-                            ></input>
-                        </div>
+                        <GameCard
+                            game={game}
+                            generateData={generateData}
+                            setGenerateData={setGenerateData}
+                        />
                     )}
                 </For>
             </Show>
