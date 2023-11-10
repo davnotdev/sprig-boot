@@ -18,6 +18,7 @@ export default function Surprise({
         min="0"
         max="300"
         value="0"
+        step="1"
         onchange={(e) => {
           setGenerateData({
             gameCount: parseInt(e.target.value),
@@ -25,7 +26,7 @@ export default function Surprise({
           setGameCount(parseInt(e.target.value));
         }}
       ></input>
-      <p>We will be loading {gameCount()} games</p>
+      <p>We will be loading {gameCount()} games!</p>
     </>
   );
 }

@@ -11,7 +11,7 @@ export default function Selection({
   setGenerateData: Setter<GenerateData>;
 }) {
   return (
-    <>
+    <div class="flex flex-row space-x-3 justify-center">
       <button
         onclick={() => {
           setState("choice");
@@ -20,7 +20,7 @@ export default function Selection({
       >
         Choose Games
       </button>{" "}
-      or
+      <p>or</p>
       <button
         onclick={() => {
           setState("surprise");
@@ -29,6 +29,6 @@ export default function Selection({
       >
         Surprise me!
       </button>
-    </>
+    </div>
   );
 }

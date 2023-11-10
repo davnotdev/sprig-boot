@@ -14,20 +14,23 @@ function App() {
   let [generateData, setGenerateData] = createSignal(null as GenerateData);
 
   return (
-    <>
-      <h1>Sprig Boot</h1>
-      <h2>Load multiple games on your little sprig!</h2>
-      <Selection setState={setState} setGenerateData={setGenerateData} />
-      <Show when={state() == "choice"}>
-        <Choice generateData={generateData} setGenerateData={setGenerateData} />
-      </Show>
-      <Show when={state() == "surprise"}>
-        <Surprise setGenerateData={setGenerateData} />
-      </Show>
-      <Show when={generateData() != null}>
-        <Generate generateData={generateData} />
-      </Show>
-    </>
+      <div class="flex flex-col space-y-5">
+        <h1>Sprig Boot</h1>
+        <h2>Load multiple games on your little sprig!</h2>
+        <Selection setState={setState} setGenerateData={setGenerateData} />
+        <Show when={state() == "choice"}>
+          <Choice
+            generateData={generateData}
+            setGenerateData={setGenerateData}
+          />
+        </Show>
+        <Show when={state() == "surprise"}>
+          <Surprise setGenerateData={setGenerateData} />
+        </Show>
+        <Show when={generateData() != null}>
+          <Generate generateData={generateData} />
+        </Show>
+      </div>
   );
 }
 
