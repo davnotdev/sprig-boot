@@ -28,15 +28,15 @@ export default function GameCard({
         data ||= { games: [] };
 
         if (!selected()) {
-          data.games = [...(data.games || []), game];
+          data.games = [...data.games, game];
           setSelected(true);
           setGenerateData(data);
         } else {
-          let newGames = (data.games || []).filter(
-            (listGame) => listGame.downloadUrl == game.downloadUrl,
+          let newGames = data.games.filter(
+            (listGame) => listGame.downloadUrl != game.downloadUrl,
           );
-          setGenerateData({ games: newGames });
           setSelected(false);
+          setGenerateData({ games: newGames });
         }
       }}
     >
