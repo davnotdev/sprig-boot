@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "fork-me-github": "^1.2.0",
     "solid-js": "^1.7.8",
     "terser": "^5.24.0"
   },
